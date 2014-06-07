@@ -48,6 +48,10 @@
 
   <body>
 
+    <div class="wrap">
+      
+    </div>
+
     <div id="wrap">
 
       <div class="container">
@@ -311,6 +315,8 @@
               
               var selection = d3.selectAll("#svg-puntos path.circle").classed("selected", function (d) {
 
+                return true;
+
                 var fechaPunto = d3map.obtenerFechaPunto(d);
                 var enFecha = rangoFechas[0] <= fechaPunto && fechaPunto <= rangoFechas[1];
                 var enComisaria = false;
@@ -539,14 +545,14 @@
                 var svg = d3.select(map.getPanes().overlayPane).append("svg").attr("id", "svg-puntos"),
                     g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
-                d3.json("homicidios.json", function(collection) {
+                d3.json("camaras.geojson", function(collection) {
 
                   // Dibuja los puntos sobre el mapa de Leaflet con D3.js
                   var transform = d3.geo.transform({point: projectPoint});
                       
                   d3map.collectionPuntos = collection;
                   d3map.pathPuntos = d3.geo.path().projection(transform).pointRadius(function (d) { 
-                    return 5; // TODO: Implementar radio según zoom del mapa
+                    return 8; // TODO: Implementar radio según zoom del mapa
                   });
 
                   // Obtener los puntos y asignar una clase

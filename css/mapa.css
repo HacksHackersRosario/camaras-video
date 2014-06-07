@@ -174,18 +174,18 @@ svg {
   -webkit-transition: all .2s;
   -moz-transition: all .2s;
   opacity: 0;
-  stroke: #D91C1C;
-  stroke-width: 2;
+  stroke: rgba(0,0,0,.2);
+  stroke-width: 20;
   cursor: pointer;
-  fill: #D91C1C;
+  fill: #69D2E7;
 
 }
 .circle.selected:hover {
-  opacity: 0.9;
-  fill: #F0DC00;
-  stroke: #111;
+  opacity: 1;
+  fill: #69D2E7;
+  stroke: rgba(0,0,0,.2);
 }
-.circle.selected { opacity: 0.6; visibility: visible; }
+.circle.selected { opacity: 1; visibility: visible; }
 
 #timeline { text-align: center }
 
