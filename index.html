@@ -20,6 +20,7 @@
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="vendor/momentjs/moment-with-langs.min.js"></script>
+    <script src="vendor/chartjs/Chart.min.js"></script>
     
     <script src="http://d3js.org/d3.v3.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.0.0-rc.3/lodash.underscore.min.js"></script>
@@ -54,60 +55,15 @@
         <div class="main-padder">
 
           <div class="row">
-            <div class="col-sm-3">
-              <div class="filtros">
-                <h5 class="titulo-color">Filtros <small>- Click para activar</small></h5>
-                <button id="limpiar-filtros" class="btn btn-xs btn-block"><i class="fa fa-undo"></i> Limpiar filtros</button>
-                <div id="scroll-filtros">
-                  
-                  <h6>Distritos</h6>
-                  <div id="distritos-togglers">
-                    <div><button data-id="7" type="button" class="boton-filtro">Distrito Sur</button></div>
-                    <div><button data-id="4" type="button" class="boton-filtro">Distrito Norte</button></div>
-                    <div><button data-id="6" type="button" class="boton-filtro">Distrito Oeste</button></div>
-                    <div><button data-id="3" type="button" class="boton-filtro">Distrito Centro</button></div>
-                    <div><button data-id="5" type="button" class="boton-filtro">Distrito Noroeste</button></div>
-                    <div><button data-id="8" type="button" class="boton-filtro">Distrito Sudoeste</button></div>
-                  </div>
-                  
-                  <h6>Comisarías</h6>
-                  <div id="comisarias-togglers">
-                    <div><button data-id="28" type="button" class="boton-filtro">Comisaría 1</button></div>
-                    <div><button data-id="20" type="button" class="boton-filtro">Comisaría 2</button></div>
-                    <div><button data-id="13" type="button" class="boton-filtro">Sub Comisaría 2</button></div>
-                    <div><button data-id="31" type="button" class="boton-filtro">Comisaría 3</button></div>
-                    <div><button data-id="29" type="button" class="boton-filtro">Comisaría 4</button></div>
-                    <div><button data-id="15" type="button" class="boton-filtro">Comisaría 5</button></div>
-                    <div><button data-id="8" type="button" class="boton-filtro">Comisaría 6</button></div>
-                    <div><button data-id="30" type="button" class="boton-filtro">Comisaría 7</button></div>
-                    <div><button data-id="10" type="button" class="boton-filtro">Comisaría 8</button></div>
-                    <div><button data-id="23" type="button" class="boton-filtro">Comisaría 10</button></div>
-                    <div><button data-id="14" type="button" class="boton-filtro">Comisaría 11</button></div>
-                    <div><button data-id="6" type="button" class="boton-filtro">Comisaría 12</button></div>
-                    <div><button data-id="3" type="button" class="boton-filtro">Comisaría 13</button></div>
-                    <div><button data-id="5" type="button" class="boton-filtro">Comisaría 14</button></div>
-                    <div><button data-id="16" type="button" class="boton-filtro">Comisaría 15</button></div>
-                    <div><button data-id="21" type="button" class="boton-filtro">Comisaría 16</button></div>
-                    <div><button data-id="24" type="button" class="boton-filtro">Comisaría 17</button></div>
-                    <div><button data-id="7" type="button" class="boton-filtro">Comisaría 18</button></div>
-                    <div><button data-id="4" type="button" class="boton-filtro">Comisaría 19</button></div>
-                    <div><button data-id="11" type="button" class="boton-filtro">Sub Comisaría 19</button></div>
-                    <div><button data-id="18" type="button" class="boton-filtro">Comisaría 20</button></div>
-                    <div><button data-id="22" type="button" class="boton-filtro">Sub Comisaría 20</button></div>
-                    <div><button data-id="12" type="button" class="boton-filtro">Comisaría 21</button></div>
-                    <div><button data-id="17" type="button" class="boton-filtro">Sub Comisaría 21</button></div>
-                    <div><button data-id="25" type="button" class="boton-filtro">Sub Comisaría 22</button></div>
-                    <div><button data-id="19" type="button" class="boton-filtro">Sub Comisaría 24</button></div>
-                    <div><button data-id="26" type="button" class="boton-filtro">Comisaría 30</button></div>
-                    <div><button data-id="27" type="button" class="boton-filtro">Comisaría 32</button></div>
-                    <div><button data-id="9" type="button" class="boton-filtro">Comisaría 33</button></div>
-                  </div>
-                </div>
-              </div>
+            <div class="col-md-12">
+              <h1>Cámaras de videovigilancia</h1>
             </div>
-            <div class="col-sm-9 mapa-y-filtros">
+          </div>
 
-              <div class="autoplay-wrapper">
+          <div class="row">
+            <div class="col-sm-12 mapa-y-filtros">
+
+              <div class="autoplay-wrapper" style="display: none">
                 <button id="autoplay" title="Animar el rango de fechas" class="btn btn-primary"><i class="fa fa-play"></i> Reproducir</button><br>
               </div>
 
@@ -120,8 +76,6 @@
               <div id='map' data-source="mapa.json"></div>
              
               <h5 class="titulo-color">Línea de Tiempo <small>- Seleccioná un área "pintando" en la línea del tiempo para filtrar por fecha, o arrastrando los extremos grises.</small></h5>
-              
-              <div id="timeline"></div>
 
               <div id="sidebar">
                 <img src="images/close.png" id="cerrar-sidebar">
@@ -130,6 +84,32 @@
 
             </div>
           </div>
+
+          <div class="row">
+            <div class="col-md-6 moduloInfografia">
+              <h1 class="bigMoney">$ 1.452.213</h1>
+              <h2 class="bigMoneyLegend">al 9/2012</h2>
+              <h3 class="midMoney">$ 255</h3>
+              <h4 class="midMoneyLegend">por cámara</h4>
+            </div>
+            <div class="col-md-6 moduloInfografia">
+              <h3>Cámaras instaladas a través del tiempo</h3>
+              <img src="images/timeline.png">
+              <div id="timeline" style="display: none"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 charts moduloInfografia">
+              <h2>Cámaras por municipio</h2>
+              <canvas id="pieChart1" width="400" height="400"></canvas>
+            </div>
+            <div class="col-md-6 moduloInfografia">
+              <h1>Global View S.A.</h1>
+              <h2>Mario Montoto</h2>
+            </div>
+          </div>
+
 
           <script type="text/html" id="sideTemplate">
               <h4><img src="images/cruz.png" style="height: 16px"> <%- victimas %></h4>
@@ -623,7 +603,7 @@
 
               function timeseries_chart() {
                   var margin = { top: 20, right: 20, bottom: 20, left: 20 },
-                      width = 610,
+                      width = 410,
                       height = 80;
 
                   var x = d3.time.scale()
@@ -787,6 +767,27 @@
 
             };
             window.onload = main;
+
+
+            var data = [
+              {
+                value: 30,
+                color:"#F38630"
+              },
+              {
+                value : 50,
+                color : "#E0E4CC"
+              },
+              {
+                value : 100,
+                color : "#69D2E7"
+              }     
+            ];
+
+            //Get the context of the canvas element we want to select
+            var ctx = document.getElementById("pieChart1").getContext("2d");
+            new Chart(ctx).Pie(data);
+
           </script>
 
 

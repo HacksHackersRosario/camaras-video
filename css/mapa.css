@@ -1,5 +1,4 @@
 body {
-  background: #ddd url(../images/grid.png);
   height: 100%;
 }
 
@@ -7,26 +6,34 @@ html {
   height: 100%;
 }
 
-.nota {
-  max-width: 600px;
+.bigMoney {
+  text-align: center;
+  font-size: 48pt;
+  color: #FFA359;
+  font-weight: bold;
+}
+
+.midMoney {
+  text-align: center;
+  font-size: 36pt;
+  color: #69D2E7;
+  font-weight: bold;
+}
+
+.bigMoneyLegend, .midMoneyLegend {
+  text-align: center;
+}
+
+.moduloInfografia {
+  padding: 20px;
+}
+
+.charts {
+  text-align: center;
+}
+
+.charts canvas {
   margin: auto;
-}
-
-.nota img {
-  width: 100%;
-  margin: 15px 0;
-  padding: 5px;
-  background: #eee;
-  border: 1px solid #ccc;
-}
-
-.nota h1 {
-  font-weight: 400;
-}
-
-.main-padder {
-  padding: 30px;
-  background: white;
 }
 
 .container.with-navbar {
@@ -51,7 +58,6 @@ html {
 }
 
 .titulo-color {
-  color: #09A1ED;
   font-weight: 400;
 }
 
@@ -76,7 +82,6 @@ html {
 #sidebar { 
   height: 370px;
   width: 300px;
-  color: #333;
   position: absolute;
   top: 85px;
   right: 30px;
@@ -183,29 +188,6 @@ svg {
 .circle.selected { opacity: 0.6; visibility: visible; }
 
 #timeline { text-align: center }
-
-.filtros div { margin-bottom: 5px; }
-
-.filtros button {
-  display: block;
-  width: 100%;
-  background: white;
-  border: 1px solid #ddd;
-  font-size: 9pt;
-}
-
-.filtros h5:first-child {
-  margin-top: 0px;
-}
-
-.filtros button:hover {
-  color: #333;
-}
-
-.filtros button.active {
-  background: rgb(41, 82, 122);
-  color: white;
-}
 
 .hhlogo {
   margin-top: 2px;
